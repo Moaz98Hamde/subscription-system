@@ -55,3 +55,5 @@ Run migrations & seeds
 Run Subscription system app
 
 > $ php artisan serve
+
+Seeded admin email: admin@admin.com , password: secret  
