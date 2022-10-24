@@ -18,7 +18,7 @@ Subscription system built on top of [Laravel Framework](https://laravel.com) and
 
 create account on stripe : https://stripe.com/
 
-Create new product & name it ['plans'](https://dashboard.stripe.com/test/products/create) with two types of subscriptions (prices) monthly & yearly
+Create new product & name it ['plan'](https://dashboard.stripe.com/test/products/create) with two types of subscriptions (prices) monthly & yearly
 
 
 
@@ -39,6 +39,8 @@ Fill the following env variables in .env file
 > STRIPE_KEY
 
 > STRIPE_SECRET
+
+> PRODUCT_NAME=plan
 
 > MONTHLY_SUB_ID
 

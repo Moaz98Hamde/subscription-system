@@ -30,6 +30,57 @@
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
             margin: 1rem 0;
         }
+
+        .button {
+            position: relative;
+            padding: 8px 16px;
+            background: #009579;
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .button:active {
+            background: #007a63;
+        }
+
+        .button__text {
+            font: bold 20px "Quicksand", san-serif;
+            color: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .button--loading .button__text {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .button--loading::after {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 4px solid transparent;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: button-loading-spinner 1s ease infinite;
+        }
+
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+
+            to {
+                transform: rotate(1turn);
+            }
+        }
     </style>
 @endpush
 
@@ -41,8 +92,8 @@
 
             <div id="card-element"></div>
 
-            <button id="card-button" data-secret="{{ $intent->client_secret }}">
-                Pay now
+            <button id="card-button" data-secret="{{ $intent->client_secret }}" class="button" onclick="this.classList.toggle('button--loading')">
+                    <span class="button__text">Pay now</span>
             </button>
         </div>
 
@@ -56,6 +107,8 @@
 
     @push('scripts')
         <script src="https://js.stripe.com/v3/"></script>
+        <script src="{{ asset('src/plugins/sweetalert2/sweetalert2.all.js') }}"></script>
+        <script src="{{ asset('src/plugins/sweetalert2/sweet-alert.init.js') }}"></script>
 
         <script>
             const stripe = Stripe("{{ env('STRIPE_KEY') }}");
@@ -76,6 +129,11 @@
             cardButton.classList.add("btn")
             cardButton.classList.add("btn-primary")
 
+            // show spinner
+            cardButton.addEventListener('click', function(e){
+                this.classList.add("button--loading");
+            });
+
             cardButton.addEventListener('click', async (e) => {
                 const {
                     setupIntent,
@@ -92,7 +150,11 @@
                 );
 
                 if (error) {
-                    console.log(error.message);
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: error.message,
+                    });
                     // Display "error.message" to the user...
                 } else {
                     // The card has been verified successfully...

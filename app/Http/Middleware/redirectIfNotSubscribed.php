@@ -16,7 +16,7 @@ class redirectIfNotSubscribed
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && !$request->user()->subscribed('plans') && !$request->user()->hasRole('admin')) {
+        if (!$request->user() || !$request->user()->subscribed(env('PRODUCT_NAME'))) {
             // This user is not a paying customer...
             return redirect(route('pricing'));
         }
