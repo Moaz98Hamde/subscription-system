@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Auth routes
 require __DIR__ . '/auth.php';
 
+Route::redirect('/', '/login', 301);
 
 // Admin routes
 Route::controller(AdminController::class)->group(function () {
