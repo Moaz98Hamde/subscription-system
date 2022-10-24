@@ -59,3 +59,5 @@ Run Subscription system app
 > $ php artisan serve
 
 Seeded admin email: admin@admin.com , password: secret  
+
+Test card number: 4242 4242 4242 4242 , MM/YY: 0424, CVV: 242, ZIP: 42424
