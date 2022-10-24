@@ -12,7 +12,7 @@
           <div class="sidebar-menu">
               <ul id="accordion-menu">
                   <li class="dropdown">
-                      <a href="javascript:;" class="dropdown-toggle no-arrow pl-3">
+                      <a href="{{route('dashboard')}}" class="dropdown-toggle no-arrow pl-3">
                           <span class="fa fa-home"></span>
                           <span class="mtext px-2">Home</span>
                       </a>
@@ -22,21 +22,9 @@
                           <span class="fa fa-user px-2"></span><span class="mtext">Users</span>
                       </a>
                       <ul class="submenu">
-                          <li><a href="form-wizard.html">All users</a></li>
-                          <li><a href="html5-editor.html">Add new user</a></li>
-                          <li><a href="image-cropper.html">Active users</a></li>
-                          <li><a href="image-cropper.html">Banned users</a></li>
+                          <li><a href="{{route('users')}}">All users</a></li>
+                          <li><a href="{{route('users.create')}}">Add new user</a></li>
                       </ul>
-                  </li>
-                  <li class="dropdown">
-                      <a href="javascript:;" class="dropdown-toggle pl-2">
-                          <span class="fa fa-plus px-2"></span>
-                          <span class="mtext">Subscriptions</span>
-                      </a>
-                      <ul class="submenu">
-                          <li><a href="form-wizard.html">All subscriptions</a></li>
-                          <li><a href="form-wizard.html">Monthly subscriptions</a></li>
-                          <li><a href="form-wizard.html">Yearly subscriptions</a></li>
                   </li>
               </ul>
           </div>

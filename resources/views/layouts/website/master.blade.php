@@ -15,6 +15,7 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
@@ -34,14 +35,12 @@
 
 <body>
     @include('partials.preloader')
-    @include('partials.admin_header')
+    @include('partials.website_header')
     @include('partials.right_sidebar')
-
-    @include('partials.admin_sidebar')
 
     <div class="mobile-menu-overlay"></div>
 
-    <div class="main-container">
+    <div class="main-container" style="padding: 80px 20px 2px 15px;">
         <div class="pd-ltr-20 xs-pd-20-10">
             <div class="min-height-200px">
                 <div class="page-header">
@@ -50,18 +49,6 @@
                             <div class="title">
                                 <h4>{{ $page ?? 'blank' }}</h4>
                             </div>
-                            @if (isset($breadcrumb) && $breadcrumb)
-                                <nav aria-label="breadcrumb" role="navigation">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item">
-                                            <a href="index.html">Home</a>
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page">
-                                            blank
-                                        </li>
-                                    </ol>
-                                </nav>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -82,8 +69,8 @@
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/process.js') }}"></script>
     <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
-    @stack('scripts')
 
+    @stack('scripts')
 </body>
 
 </html>

@@ -28,9 +28,7 @@
     <div class="login-header box-shadow">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
-                <a href="login.html">
-                    <img src="{{ asset('vendors/images/deskapp-logo.svg') }}" alt="" />
-                </a>
+              
             </div>
             <div class="login-menu">
                 <ul>
@@ -50,13 +48,13 @@
                         <div class="wizard-content">
                             <form action="{{ route('register.store') }}" method="POST">
                                 @csrf
-                                <div class="form-wrap max-width-600 mx-auto p-5 pb-0">
+                                <div class="form-wrap max-width-600 mx-auto px-5 pt-5">
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Email Address*</label>
                                         <div class="col-sm-8">
                                             <input type="email"
                                                 class="form-control @error('email') form-control-danger @enderror"
-                                                name="email" />
+                                                name="email" value="{{old('email')}}"/>
                                                @error('email')
                                                 <small class="text-danger">
                                                     {{ $message }}
@@ -69,7 +67,7 @@
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('name') form-control-danger @enderror"
-                                                name="name" />
+                                                name="name" value="{{old('name')}}" />
                                                @error('name')
                                                 <small class="text-danger">
                                                     {{ $message }}

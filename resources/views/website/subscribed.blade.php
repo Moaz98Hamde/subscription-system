@@ -1,5 +1,4 @@
-@extends('layouts.admin.master', ['page' => 'Dashboard'])
-
+@extends('layouts.website.master', ['page' => 'Subscibed'])
 
 @push('styles')
     <style>
@@ -17,7 +16,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="text-center">
-                    Welcome 😎
+                    You are subscribed Member 🔥
                 </h1>
             </div>
         </div>

@@ -27,9 +27,7 @@
     <div class="login-header box-shadow">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
-                <a href="login.html">
-                    <img src="{{ asset('vendors/images/deskapp-logo.svg') }}" alt="" />
-                </a>
+           
             </div>
             <div class="login-menu">
                 <ul>
@@ -77,7 +75,7 @@
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="remember"
                                             name="remember" />
-                                        <label class="custom-control-label" for="customCheck1">
+                                        <label class="custom-control-label" for="remember">
                                             Remember
                                         </label>
                                     </div>
