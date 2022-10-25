@@ -40,10 +40,11 @@ Route::controller(DataTablesController::class)->group(function () {
 });
 
 // Customer routes
-Route::controller(CustomerController::class)->group(function () {
-    Route::get('/pricing', 'pricing')->middleware(['auth', 'unsubscribed', 'preventDeactivated'])->name('pricing');
-    Route::get('/payment-method', 'paymentMethod')
-        ->middleware(['auth', 'unsubscribed', 'preventDeactivated'])->name('payment_method');
-    Route::post('/subscribe', 'subscribe')->middleware(['auth', 'unsubscribed', 'preventDeactivated'])->name('subscribe');;
-    Route::get('/subscribed', 'subscribed')->middleware(['auth', 'subscribed', 'preventDeactivated'])->name('subscribed');
-});
+Route::controller(CustomerController::class)
+    ->middleware(['auth', 'preventDeactivated'])
+    ->group(function () {
+        Route::get('/pricing', 'pricing')->middleware(['unsubscribed'])->name('pricing');
+        Route::get('/payment-method', 'paymentMethod')->middleware(['unsubscribed'])->name('payment_method');
+        Route::post('/subscribe', 'subscribe')->middleware(['unsubscribed'])->name('subscribe');;
+        Route::get('/subscribed', 'subscribed')->middleware(['subscribed'])->name('subscribed');
+    });
