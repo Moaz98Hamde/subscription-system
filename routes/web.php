@@ -24,16 +24,18 @@ require __DIR__ . '/auth.php';
 Route::redirect('/', '/login', 301);
 
 // Admin routes
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/dashboard', 'dashboard')->middleware(['auth', 'role:admin'])->name('dashboard');
-    Route::get('/users', 'users')->middleware(['auth', 'role:admin'])->name('users');
-    Route::get('/users/create', 'createUser')->middleware(['auth', 'role:admin'])->name('users.create');
-    Route::get('/users/edit/{user}', 'editUser')->middleware(['auth', 'role:admin'])->name('users.edit');
-    Route::post('/users', 'storeUser')->middleware(['auth', 'role:admin'])->name('users.store');
-    Route::put('/users/{user}', 'updateUser')->middleware(['auth', 'role:admin'])->name('users.update');
-    Route::get('/users/activate/{user}', 'activateUser')->middleware(['auth', 'role:admin'])->name('users.activate');
-    Route::get('/users/deactivate/{user}', 'deactivateUser')->middleware(['auth', 'role:admin'])->name('users.deactivate');
-});
+Route::controller(AdminController::class)
+    ->middleware(['auth', 'role:admin'])
+    ->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/users', 'users')->name('users');
+        Route::get('/users/create', 'createUser')->name('users.create');
+        Route::get('/users/edit/{user}', 'editUser')->name('users.edit');
+        Route::post('/users', 'storeUser')->name('users.store');
+        Route::put('/users/{user}', 'updateUser')->name('users.update');
+        Route::get('/users/activate/{user}', 'activateUser')->name('users.activate');
+        Route::get('/users/deactivate/{user}', 'deactivateUser')->name('users.deactivate');
+    });
 
 Route::controller(DataTablesController::class)->group(function () {
     Route::get('/customers', 'customers')->middleware(['auth', 'role:admin'])->name('data-table.customers');
