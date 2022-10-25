@@ -150,6 +150,7 @@
                 );
 
                 if (error) {
+                    cardButton.classList.remove("button--loading")
                     swal({
                         type: 'error',
                         title: 'Oops...',

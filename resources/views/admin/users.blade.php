@@ -50,7 +50,6 @@
                         }
                     },
                     data: function(data) {
-                        console.log(data);
                     }
                 },
                 "columns": [{
